@@ -50,7 +50,7 @@ export const user = {
 
   display: {
     label: "Get user",
-    hidden: true,
+    hidden: false,
     description:
       "The only purpose of this trigger is to populate the dropdown list of users in the UI.",
   },
