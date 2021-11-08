@@ -53,9 +53,9 @@ export const project = {
 
   display: {
     label: "Get issue project",
-    hidden: true,
+    hidden: false,
     description:
-      "The only purpose of this trigger is to populate the dropdown list of issue projects in the UI, thus, it's hidden.",
+      "The only purpose of this trigger is to populate the dropdown list of issue projects in the UI.",
   },
 
   operation: {

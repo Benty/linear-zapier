@@ -36,7 +36,7 @@ const getStatusList = async (z: ZObject, bundle: Bundle) => {
               name
               type
             }
-          } 
+          }
         }
       }`,
     },
@@ -53,9 +53,9 @@ export const status = {
 
   display: {
     label: "Get issue status",
-    hidden: true,
+    hidden: false,
     description:
-      "The only purpose of this trigger is to populate the dropdown list of issue statuses in the UI, thus, it's hidden.",
+      "The only purpose of this trigger is to populate the dropdown list of issue statuses in the UI.",
   },
 
   operation: {

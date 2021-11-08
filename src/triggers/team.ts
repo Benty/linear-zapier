@@ -22,8 +22,8 @@ const getTeamList = async (z: ZObject, bundle: Bundle) => {
     },
     body: {
       query: `
-      query { 
-        teams(first: 100) { 
+      query {
+        teams(first: 100) {
           nodes {
             id
             name
@@ -45,7 +45,7 @@ export const team = {
     label: "Get team",
     hidden: true,
     description:
-      "The only purpose of this trigger is to populate the dropdown list of repos in the UI, thus, it's hidden.",
+      "The only purpose of this trigger is to populate the dropdown list of repos in the UI.",
   },
 
   operation: {

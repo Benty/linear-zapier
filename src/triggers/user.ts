@@ -52,7 +52,7 @@ export const user = {
     label: "Get user",
     hidden: true,
     description:
-      "The only purpose of this trigger is to populate the dropdown list of users in the UI, thus, it's hidden.",
+      "The only purpose of this trigger is to populate the dropdown list of users in the UI.",
   },
 
   operation: {
