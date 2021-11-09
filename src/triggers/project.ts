@@ -53,7 +53,7 @@ export const project = {
 
   display: {
     label: "Get issue project",
-    hidden: false,
+    hidden: true,
     description:
       "The only purpose of this trigger is to populate the dropdown list of issue projects in the UI.",
   },

@@ -4,9 +4,10 @@ interface UsersResponse {
   data: {
     users: {
       nodes: {
+        id: string;
+        email: string;
         name: string;
         displayName: string;
-        id: string;
         active: boolean;
       }[];
     };
@@ -24,11 +25,16 @@ const getUserList = async (z: ZObject, bundle: Bundle) => {
     body: {
       query: `
       query {
-        users(first: 100) {
+        users(
+          filter: {
+            email: {contains: "${bundle.inputData.email}"}
+          },
+          first: 100) {
           nodes {
+            id
+            email
             name
             displayName
-            id
             active
           }
         }
@@ -39,23 +45,51 @@ const getUserList = async (z: ZObject, bundle: Bundle) => {
   });
   const users = (response.json as UsersResponse).data.users.nodes.filter(user => user.active === true);
   return users.map(user => ({
-    name: `${user.name} (${user.displayName})`,
     id: user.id,
+    email: user.email,
+    name: user.name,
+    displayName: user.displayName,
   }));
 };
 
-export const user = {
+export const searchUsers = {
   key: "user",
   noun: "User",
 
   display: {
     label: "Get user",
-    hidden: true,
+    hidden: false,
     description:
-      "The only purpose of this trigger is to populate the dropdown list of users in the UI.",
+      "The only purpose of this search is to lookup a list of users in the UI.",
   },
 
   operation: {
+    inputFields: [
+      {
+        key: 'email',
+        type: 'string',
+        label: 'Email',
+        helpText:
+          'The email of the user you are searching for.',
+      },
+    ],
+
     perform: getUserList,
+
+    sample: {
+      id: "xxxx-xxxx-xxxx-xxxx-xxxx",
+      name: "Billy Roberts",
+      email: "billy@example.com",
+      displayName: "Billy",
+    },
+
+    outputFields: [
+      {key: "id", label: "ID"},
+      {key: "name", label: "Name"},
+      {key: "email", label: "Email"},
+      {key: "displayName", label: "Display Name"},
+    ],
   },
+
+
 };

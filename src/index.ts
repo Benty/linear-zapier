@@ -1,5 +1,7 @@
 import { addBearerHeader, authentication } from "./authentication";
 import { createIssue } from "./creates/createIssue";
+import { searchUsers } from "./searches/user";
+import { searchProjects } from "./searches/project";
 import { newComment } from "./triggers/comment";
 import { newIssue, updatedIssue } from "./triggers/issue";
 import { team } from "./triggers/team";
@@ -34,6 +36,10 @@ const App = {
   creates: {
     [createIssue.key]: createIssue,
     [createComment.key]: createComment,
+  },
+  searches: {
+    [searchUsers.key]: searchUsers,
+    [searchProjects.key]: searchProjects,
   },
   triggers: {
     [newIssue.key]: newIssue,

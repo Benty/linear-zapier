@@ -1,7 +1,7 @@
 import { Bundle, ZObject } from "zapier-platform-core";
 
 interface CreateIssueRequestResponse {
-  data?: { issueCreate: { issue: { url: string }; success: boolean } };
+  data?: { issueCreate: { issue: { id: string, url: string }; success: boolean } };
   errors?: {
     message: string;
     extensions?: {
@@ -44,7 +44,7 @@ const createIssueRequest = async (z: ZObject, bundle: Bundle) => {
           labelIds: $labelIds
         }) {
           issue {
-            id 
+            id
             identifier
             title
             url
@@ -160,6 +160,6 @@ export const createIssue = {
         dynamic: "project.id.name",
       },
     ],
-    sample: { data: { issueCreate: { success: true } } },
+    sample: { data: {issueCreate: { issue: {id: "XXX", url: "https://linear.app/org/issue/ISSUE-XX/issue_name"}, success: true } } },
   },
 };

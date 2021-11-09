@@ -53,7 +53,7 @@ export const status = {
 
   display: {
     label: "Get issue status",
-    hidden: false,
+    hidden: true,
     description:
       "The only purpose of this trigger is to populate the dropdown list of issue statuses in the UI.",
   },
